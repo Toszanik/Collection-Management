@@ -5,7 +5,7 @@ namespace CollectorManagementSystem
 {
     public partial class MainPage : ContentPage
     {
-        string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "collections.txt");
+        string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)+"\\Kolekcje\\collections.txt");
         public ObservableCollection<CollectionItem> Collections { get; set; } = new ObservableCollection<CollectionItem>();
 
         public MainPage()
