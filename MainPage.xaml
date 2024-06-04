@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CollectorManagementSystem.MainPage">
+
+    <VerticalStackLayout Spacing="25" Padding="30">
+        <Label Text="Your Collections" FontSize="Title" HorizontalOptions="Center" />
+        <ScrollView Orientation="Horizontal">
+            <HorizontalStackLayout Spacing="20">
+                <CollectionView x:Name="CollectionsView" SelectionMode="Single" HorizontalScrollBarVisibility="Always">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <VerticalStackLayout>
+                                <VerticalStackLayout Spacing="10" Padding="10">
+                                    <Label Text="{Binding Name}" FontSize="Medium" HorizontalOptions="StartAndExpand"/>
+                                    <HorizontalStackLayout Spacing="10">
+                                        <Button Text="Add Item" Clicked="AddItem_Clicked" HorizontalOptions="End" WidthRequest="100"/>
+                                        <Button Text="Rename" Clicked="ChangeNameButton_Clicked" HorizontalOptions="End" WidthRequest="100"/>
+                                        <Button Text="Delete" Clicked="DeleteCollectionButton_Clicked" HorizontalOptions="End" WidthRequest="100"/>
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                                <CollectionView ItemsSource="{Binding Items}" Margin="0,10,0,0" HeightRequest="400">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <VerticalStackLayout Spacing="10" Padding="10">
+                                                <Label Text="{Binding Name}" HorizontalOptions="StartAndExpand"/>
+                                                <HorizontalStackLayout Spacing="10">
+                                                    <Button Text="Edit" Clicked="EditItem_Clicked"/>
+                                                    <Button Text="Delete" Clicked="DeleteItem_Clicked"/>
+                                                </HorizontalStackLayout>
+                                            </VerticalStackLayout>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </HorizontalStackLayout>
+        </ScrollView>
+        <Button Text="Add New Collection" Clicked="AddCollectionButton_Clicked" HorizontalOptions="Center"/>
+    </VerticalStackLayout>
+</ContentPage>
